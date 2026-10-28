@@ -1,0 +1,61 @@
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow-lg">
+        <div class="p-4">
+            <h2 class="display-6 text-primary text-center">
+                <i class="fas fa-sign-in-alt"></i> Welcome back, please log in
+            </h2>
+        </div>
+
+        <div class="text-danger mt-1" asp-validation-summary="All"></div>
+
+        <div class="p-4 pb-5">
+            <form asp-action="Login" asp-controller="Account" method="post">
+
+                <div class="form-group mb-2">
+                    <label class="text-uppercase fw-bold text-dark" asp-for="Email">
+                        <i class="fas fa-envelope"></i> Email
+                    </label>
+                    <input class="form-control" asp-for="Email" autocomplete="off" placeholder="Enter email address" />
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+                <div class="form-group mb-2">
+                    <div class="d-flex justify-content-between">
+                        <label class="text-uppercase fw-bold text-dark" asp-for="Password">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <a class="text-muted" asp-action="Recovery" asp-controller="Account">
+                            <small>Forgot Password?</small>
+                        </a>
+                    </div>
+                    <input class="form-control" asp-for="Password" placeholder="Enter password" />
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <div class="form-check mb-2 mt-1">
+                    <input class="form-check-input" asp-for="RememberMe" type="checkbox" />
+                    <label class="form-check-label text-dark">
+                        <i class="fas fa-check-square"></i> Remember me
+                    </label>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success btn-sm shadow-sm">
+                        <i class="fas fa-sign-in-alt"></i> Log in
+                    </button>
+                    <br /><br />
+                    <span class="text-muted">Don't have an account?</span>
+                    <a asp-action="Register" asp-controller="Account" class="text-primary">
+                        <i class="fas fa-user-plus"></i> Create an account
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

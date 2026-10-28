@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Notification>
+
+<div class="container mt-4">
+    <h2>Notification Messages</h2>
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model != null && Model.Any())
+            {
+                <div class="list-group">
+                    @foreach (var notification in Model)
+                    {
+                        <a href="#" class="list-group-item list-group-item-action @(notification.IsRead ? "" : "list-group-item-info")">
+                            <h5 class="mb-1"><i class="fa-solid fa-info-circle"></i> @notification.Message</h5>
+                            <small class="text-muted">@notification.NotificationDate.ToString("g")</small>
+                        </a>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info" role="alert">
+                    You have no new notifications.
+                </div>
+            }
+        </div>
+    </div>
+</div>

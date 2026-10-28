@@ -1,0 +1,79 @@
+﻿@model UserDashboardViewModel
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- User Profile Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @Model.LastName
+                        <span class="badge bg-success ms-2">Active</span>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@Model.Email</h6>
+                    <p class="card-text">
+                        ID Number: @Model.IDNumber<br />
+                        Phone Number: @Model.PhoneNumber
+                    </p>
+                    <a class="btn btn-primary btn-sm" asp-action="UpdateProfile" asp-controller="Client">
+                        <i class="fa-solid fa-user-edit"></i> Edit Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bank Account Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Bank Account</h5>
+                    <p class="card-text">
+                        Account No: @Model.BankAccount.AccountNumber<br />
+                        Balance: @Model.BankAccount.Balance.ToString("C")
+                    </p>
+                    <a class="btn btn-warning btn-sm" asp-action="TransferMoneyView" asp-controller="Client">
+                        <i class="fa-solid fa-money-bill-wave"></i> Send Cash
+                    </a>
+                    <a class="btn btn-outline-primary btn-sm" asp-action="Transaction" asp-controller="Client">
+                        <i class="fa-solid fa-list"></i> View Transactions
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Notifications</h5>
+                    <ul class="list-group">
+                        @foreach (var notification in Model.Notifications)
+                        {
+                            <li class="list-group-item @(!notification.IsRead ? "list-group-item-info" : "")">
+                                <i class="fa-solid fa-info-circle"></i> @notification.Message
+                                <span class="badge bg-secondary float-end">@notification.NotificationDate.ToShortDateString()</span>
+                            </li>
+                        }
+                    </ul>
+                    <a class="btn btn-info btn-sm mt-2" asp-action="Message" asp-controller="Client">
+                        <i class="fa-solid fa-envelope"></i> View All Notifications
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Actions -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between">
+                <a class="btn btn-success btn-sm" asp-action="AddRating" asp-controller="Client">
+                    <i class="fa-solid fa-star"></i> Add Rating
+                </a>
+                
+               
+              
+            </div>
+        </div>
+    </div>
+</div>

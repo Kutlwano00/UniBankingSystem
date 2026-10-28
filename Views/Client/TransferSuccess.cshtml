@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Transfer Successful";
+}
+
+<div class="container mt-4">
+    <div class="alert alert-success">
+        <h4 class="alert-heading">Transfer Successful!</h4>
+        <p>Your transfer was completed successfully.</p>
+        <hr>
+        <p><strong>Amount Transferred:</strong> @ViewBag.Amount.ToString("C")</p>
+        <p><strong>From Account:</strong> @ViewBag.SenderAccount</p>
+        <p><strong>To Account:</strong> @ViewBag.ReceiverAccount</p>
+        <p><strong>Transfer Date:</strong> @ViewBag.TransferDate.ToString("MMMM dd, yyyy hh:mm tt")</p>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Home")">Back to Home</a>
+    </div>
+</div>
+

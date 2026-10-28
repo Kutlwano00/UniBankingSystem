@@ -1,0 +1,82 @@
+﻿@model UpdateProfileViewModel
+
+@{
+    ViewBag.Title = "Update Profile";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">
+                <i class="fas fa-user-edit"></i> Update Profile
+            </h2>
+
+            <form asp-action="UpdateProfile" method="post" class="shadow p-4 rounded bg-light">
+                <div class="form-group mb-3">
+                    <label asp-for="FirstName" class="control-label">
+                        <i class="fas fa-user"></i> First Name
+                    </label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Lastname" class="control-label">
+                        <i class="fas fa-user"></i> Last Name
+                    </label>
+                    <input asp-for="Lastname" class="form-control" />
+                    <span asp-validation-for="Lastname" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="PhoneNumber" class="control-label">
+                        <i class="fas fa-phone"></i> Phone Number
+                    </label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <!-- Display non-editable fields -->
+                <div class="form-group mb-3">
+                    <label asp-for="Email" class="control-label">
+                        <i class="fas fa-envelope"></i> Email
+                    </label>
+                    <input asp-for="Email" class="form-control" readonly />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="AccountNumber" class="control-label">
+                        <i class="fas fa-credit-card"></i> Account Number
+                    </label>
+                    <input asp-for="AccountNumber" class="form-control" readonly />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="IDNumber" class="control-label">
+                        <i class="fas fa-id-card"></i> ID Number
+                    </label>
+                    <input asp-for="IDNumber" class="form-control" readonly />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="DateOfBirth" class="control-label">
+                        <i class="fas fa-calendar-alt"></i> Date of Birth
+                    </label>
+                    <input asp-for="DateOfBirth" class="form-control" readonly />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Userrole" class="control-label">
+                        <i class="fas fa-user-tag"></i> User Role
+                    </label>
+                    <input asp-for="Userrole" class="form-control" readonly />
+                </div>
+
+                <div class="text-center">
+                    <input type="submit" value="Update Profile" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

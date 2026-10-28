@@ -1,0 +1,56 @@
+﻿@model MoneyTransferViewModel
+
+<div class="container mt-4">
+    <h2>Transfer Money</h2>
+    <div class="row">
+        <!-- Transfer Form -->
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Transfer Money</h5>
+
+                    <form asp-action="TransferMoneyView" method="post">
+                        <div class="form-group">
+                            <label for="SenderBankAccountNumber">Sender's Bank Account Number</label>
+                            <input type="text" class="form-control" id="SenderBankAccountNumber" name="SenderBankAccountNumber" value="@Model.SenderBankAccountNumber" readonly />
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="ReceiverBankAccountNumber">Receiver's Bank Account Number</label>
+                            <input type="text" class="form-control" id="ReceiverBankAccountNumber" name="ReceiverBankAccountNumber" required />
+                            <span asp-validation-for="ReceiverBankAccountNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="Amount">Amount</label>
+                            <input type="number" class="form-control" id="Amount" name="Amount" step="0.01" min="0.01" value="@Model.Amount" required />
+                            <span asp-validation-for="Amount" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <button type="submit" class="btn btn-primary">Transfer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account List -->
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Available Accounts</h5>
+                    <ul class="list-group">
+                        @foreach (var account in Model.Accounts)
+                        {
+                            <li class="list-group-item">
+                                <strong>Account Number:</strong> @account.AccountNumber<br />
+                                <strong>Owner:</strong> @account.OwnerName
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

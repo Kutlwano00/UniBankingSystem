@@ -1,0 +1,83 @@
+﻿@model AdminDashboardViewModel
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Admin Dashboard</h1>
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card bg-primary text-white shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">
+                                Users
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold">@Model.UserCount</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+                    </div>
+                    <a href="@Url.Action("ViewUsers")" class="btn btn-light btn-block mt-3">Manage Users</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card bg-success text-white shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">
+                                Consultants
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold">@Model.ConsultantCount</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-tie fa-3x"></i>
+                        </div>
+                    </div>
+                    <a href="@Url.Action("ManageConsultants")" class="btn btn-light btn-block mt-3">Manage Consultants</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card bg-warning text-white shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">
+                                Transactions
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold">@Model.TransactionCount</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-exchange-alt fa-3x"></i>
+                        </div>
+                    </div>
+                    <a href="@Url.Action("ViewOrders")" class="btn btn-light btn-block mt-3">View Transactions</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card bg-info text-white shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">
+                             
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold">@Model.OrderCount</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <a href="@Url.Action("AddUser")" class="btn btn-light btn-block mt-3">Add User 
+                        Consultant 
+                        Finacial Advisor</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

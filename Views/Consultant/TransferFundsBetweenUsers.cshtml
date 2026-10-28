@@ -1,0 +1,84 @@
+﻿@model ConsultantTransferFundsModel
+
+<div class="container mt-5">
+    <h2><i class="fas fa-exchange-alt"></i> Transfer Funds Between Users</h2>
+    <hr />
+
+    <!-- Display any messages -->
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-info" role="alert">
+            <i class="fas fa-info-circle"></i> @ViewBag.Message
+        </div>
+    }
+
+    <!-- Display errors -->
+    @if (ViewData.ModelState.ErrorCount > 0)
+    {
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i> There were some errors with your submission:
+            <ul>
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+
+    <!-- Form to transfer funds between users -->
+    <form asp-action="TransferFundsBetweenUsers" method="post" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="senderEmail"><i class="fas fa-envelope"></i> Sender Email</label>
+            <input type="email" class="form-control" id="senderEmail" name="SenderEmail" value="@Model.SenderEmail" required />
+            <div class="invalid-feedback">
+                Please provide the sender's email.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="receiverEmail"><i class="fas fa-envelope"></i> Receiver Email</label>
+            <input type="email" class="form-control" id="receiverEmail" name="ReceiverEmail" value="@Model.ReceiverEmail" required />
+            <div class="invalid-feedback">
+                Please provide the receiver's email.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="amount"><i class="fas fa-dollar-sign"></i> Amount to Transfer</label>
+            <input type="number" class="form-control" id="amount" name="Amount" step="0.01" min="0" required />
+            <div class="invalid-feedback">
+                Please enter a valid amount.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="reference"><i class="fas fa-file-alt"></i> Reference</label>
+            <input type="text" class="form-control" id="reference" name="Reference" value="@Model.Reference" required />
+            <div class="invalid-feedback">
+                Please provide a reference for the transfer.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Transfer Funds</button>
+    </form>
+</div>
+
+<!-- Include client-side validation script -->
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

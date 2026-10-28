@@ -1,0 +1,63 @@
+﻿@model ConsultantTransactionHistoryViewModel
+
+<div class="container mt-5">
+    <h2><i class="fas fa-exchange-alt"></i> Transaction History for @Model.UserEmail</h2>
+    <p>Account Number: @Model.AccountNumber</p>
+    <hr />
+
+    <!-- Display any messages -->
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-info" role="alert">
+            <i class="fas fa-info-circle"></i> @ViewBag.Message
+        </div>
+    }
+
+    <!-- Transaction Table -->
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th><i class="fas fa-calendar-alt"></i> Transaction Date</th>
+                    <th><i class="fas fa-money-bill-alt"></i> Amount</th>
+                    <th><i class="fas fa-info-circle"></i> Transaction Type</th>
+                    <th><i class="fas fa-university"></i> Sender Account</th>
+                    <th><i class="fas fa-university"></i> Receiver Account</th>
+                    <th><i class="fas fa-file-alt"></i> Reference</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Transactions != null && Model.Transactions.Any())
+                {
+                    foreach (var transaction in Model.Transactions)
+                    {
+                        <tr>
+                            <td>@transaction.TransactionDate.ToString("g")</td>
+                            <td>@transaction.Amount.ToString("C")</td>
+                            <td>@transaction.TransactionType</td>
+                            <td>@transaction.SenderAccountNumber</td>
+                            <td>@transaction.ReceiverAccountNumber</td>
+                            <td>@transaction.Reference</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center">No transactions found for this user.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <a href="@Url.Action("Index", "Consultant")" class="btn btn-primary mt-3">
+        <i class="fas fa-arrow-left"></i> Back to Dashboard
+    </a>
+</div>
+
+<!-- Include CSS and JS libraries if needed -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

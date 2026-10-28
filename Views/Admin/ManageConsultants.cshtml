@@ -1,0 +1,69 @@
+﻿@model List<AppUser>
+
+@{
+    ViewBag.Title = "Manage Consultants";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Manage Consultants</h1>
+    <div class="text-right mb-3">
+        <a href="@Url.Action("Create", "Consultants")" class="btn btn-primary">Add New Consultant</a>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var consultant in Model)
+            {
+                <tr>
+                    <td>@consultant.FirstName</td>
+                    <td>@consultant.LastName</td>
+                    <td>@consultant.Email</td>
+                    <td>@consultant.PhoneNumber</td>
+                    <td>
+                        <a href="@Url.Action("EditProfile", "Consultants", new { id = consultant.Id })" class="btn btn-info btn-sm">Update Profile</a>
+                        <a href="@Url.Action("Edit", "UpdateUser", new { id = consultant.Id })" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="@Url.Action("Delete", "Consultants", new { id = consultant.Id })" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .table {
+        margin-top: 20px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .thead-dark th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .table-bordered {
+        border: 1px solid #dee2e6;
+    }
+
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #dee2e6;
+        }
+
+    .btn-sm {
+        margin-right: 5px;
+    }
+</style>

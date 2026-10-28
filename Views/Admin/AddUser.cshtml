@@ -1,0 +1,44 @@
+﻿@model AddUserModel
+
+@{
+    ViewBag.Title = "Add User";
+}
+
+
+
+
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Add New User</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <form asp-action="AddUser" method="post">
+                            <label asp-for="FirstName" class="control-label"></label>
+                            <input asp-for="FirstName" class="form-control" />
+
+                            <label asp-for="LastName" class="control-label"></label>
+                            <input asp-for="LastName" class="form-control" />
+
+                            <label asp-for="DateOfBirth" class="control-label"></label>
+                            <input asp-for="DateOfBirth" class="form-control" type="date" />
+
+                           
+
+                            <label asp-for="IDNumber" class="control-label"></label>
+                            <input asp-for="IDNumber" class="form-control" />
+
+
+                        
+
+                            <button type="submit" class="btn btn-primary">Add User</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+﻿@model List<Transaction>
+
+@{
+    ViewBag.Title = "View Orders";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Transactions</h1>
+    <div class="row">
+        @foreach (var transaction in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            <i class="fas fa-exchange-alt"></i> Transaction @transaction.Id
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <strong>Sender Account ID:</strong> @transaction.BankAccountIdSender
+                        </p>
+                        <p class="card-text">
+                            <strong>Receiver Account ID:</strong> @transaction.BankAccountIdReceiver
+                        </p>
+                        <p class="card-text">
+                            <strong>Amount:</strong> $@transaction.Amount
+                        </p>
+                        <p class="card-text">
+                            <strong>Date:</strong> @transaction.TransactionDate.ToString("yyyy-MM-dd")
+                        </p>
+                        <p class="card-text">
+                            <strong>Reference:</strong> @transaction.Reference
+                        </p>
+                        <p class="card-text">
+                            <strong>User Email:</strong> @transaction.UserEmail
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    .card {
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+
+    .card-header {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .card-title {
+        margin-bottom: 0;
+    }
+
+    .card-body p {
+        margin: 0.5rem 0;
+    }
+</style>
